@@ -25,6 +25,12 @@
         .input {
             width: 25%;
         }
+        #mainDiv2{
+            display: none;
+        }
+        #mainDiv3{
+            display: none;
+        }
     </style>
 </head>
 
@@ -36,15 +42,13 @@
                     <label class="input-group-text" for="inputGroupSelect01">Metal</label>
                 </div>
                 <select class="custom-select" id="inputGroupSelect01" onchange="select1()">
-                    <!-- <option selected>Choose...</option>
-                    <option value="1">Silver</option>
-                    <option value="2">Gold</option>
-                    <option value="3"> Palladium</option> -->
+                   
                 </select>
             </div>
+            <button type="button" class="btn btn-primary" id="AddBtn" onclick="addMetal()">Add Item</button>
         </div><br>
-
     </div>
+    <div id="mainDiv3"></div>
     <div class="row">
         <div class="input-group col">
             <div class="input-group-prepend">
@@ -68,6 +72,31 @@
 
         </div>
     </div>
+    <div id="input">
+        <div class="input-group mb-1">
+            <div class="input-group-prepend">
+                <div class="input-group-text">weigth</div>
+            </div>
+
+
+            <input type="text" class="form-control" id="inlineFormInputGroup1"
+                placeholder="enter weigth">
+
+        </div>
+    </div>
+    <div id="input">
+        <div class="input-group mb-1">
+            <div class="input-group-prepend">
+                <div class="input-group-text">Stone</div>
+            </div>
+
+
+            <input type="text" class="form-control" id="inlineFormInputGroup2"
+                placeholder="Stones">
+
+        </div>
+    </div>
+
     <div id="mainDiv2"></div>
 
 </body>
