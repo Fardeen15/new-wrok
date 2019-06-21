@@ -8,7 +8,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase.js"></script>
     <style>
         .mainDiv {
             width: 100%;
@@ -25,10 +25,12 @@
         .input {
             width: 25%;
         }
-        #mainDiv2{
+
+        #mainDiv2 {
             display: none;
         }
-        #mainDiv3{
+
+        #mainDiv3 {
             display: none;
         }
     </style>
@@ -42,7 +44,7 @@
                     <label class="input-group-text" for="inputGroupSelect01">Metal</label>
                 </div>
                 <select class="custom-select" id="inputGroupSelect01" onchange="select1()">
-                   
+
                 </select>
             </div>
             <button type="button" class="btn btn-primary" id="AddBtn" onclick="addMetal()">Add Item</button>
@@ -79,8 +81,7 @@
             </div>
 
 
-            <input type="text" class="form-control" id="inlineFormInputGroup1"
-                placeholder="enter weigth">
+            <input type="text" class="form-control" id="inlineFormInputGroup1" placeholder="enter weigth">
 
         </div>
     </div>
@@ -91,68 +92,24 @@
             </div>
 
 
-            <input type="text" class="form-control" id="inlineFormInputGroup2"
-                placeholder="Stones">
+            <input type="text" class="form-control" id="inlineFormInputGroup2" placeholder="Stones">
 
         </div>
     </div>
 
     <div id="mainDiv2"></div>
 
+    <script src="index.js">
+    </script>
 </body>
-<script src="index.js">
-        // var input = document.getElementById("inlineFormInputGroup");
-        // var id = document.getElementById("inputGroupSelect02").value;
-        // for (var i = 0; i < id.length; i++) {
-        //     if (id1 === "1") {
-
-        //         if (id === "0") {
-        //             input.value = "SILR" + covert + i;
-        //         }
-        //         if (id === "1") {
-        //             input.value = "SIGR" + covert + i;
-        //         }
-        //         if (id === "2") {
-        //             input.value = "SINS" + covert + i;
-        //         }
-        //         if (id === "3") {
-        //             input.value = "SILS" + covert + i;
-        //         }
-        //     }
-        //     if (id1 === "2") {
-
-        //         if (id === "0") {
-        //             input.value = "GLR" + covert + i;
-        //         }
-        //         if (id === "1") {
-        //             input.value = "GGR" + covert + i;
-        //         }
-        //         if (id === "2") {
-        //             input.value = "GNS" + covert + i;
-        //         }
-        //         if (id === "3") {
-        //             input.value = "GLS" + covert + i;
-        //         }
-        //     }
-
-        //     if (id1 === "3") {
-
-        //         if (id === "0") {
-        //             input.value = "PLR" + covert + i;
-        //         }
-        //         if (id === "1") {
-        //             input.value = "PGR" + covert + i;
-        //         }
-        //         if (id === "2") {
-        //             input.value = "PNS" + covert + i;
-        //         }
-        //         if (id === "3") {
-        //             input.value = "PLS" + covert + i;
-        //         }
-        //     }
-
-
-        // }
-</script>
 
 </html>
+<!-- <form>
+    <div class="form-group">
+    <label for="exampleInputEmail1">Item Name</label>
+    <input type="name" class="form-control input" id="exampleInputEmail2" aria-describedby="emailHelp" placeholder="Enter ITem">
+    <label for="exampleInputEmail1">Item Code</label>
+    <input type="name" class="form-control input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Code">
+    </div>
+    <button type="button" class="btn btn-info" onclick = "addvalue()" >Add Metal</button>
+    </form> -->
