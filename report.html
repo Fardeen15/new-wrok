@@ -10,6 +10,7 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase.js"></script>
     <link rel="stylesheet" href="index.css">
+
 </head>
 
 <body>
@@ -23,35 +24,22 @@
 
                 </select>
             </div>
-            <button type="button" class="btn btn-primary" id="AddBtn" onclick="addMetal()">Add Item</button>
         </div><br>
-
-        <div id="mainDiv3"></div>
         <div class="row">
             <div class="input-group col">
                 <div class="input-group-prepend">
                     <label class="input-group-text" for="inputGroupSelect01">Items</label>
                 </div>
-                <select class="custom-select" id="inputGroupSelect02" onchange="itemCode()" disabled>
+                <select class="custom-select" id="inputGroupSelect02" onchange="report()" disabled>
 
                 </select>
             </div>
-            <button type="button" class="btn btn-primary" id="AddBtn" onclick="addItem()">Add Item</button>
         </div><br>
-        <div id="mainDiv2"></div>
+        <div id="data">
+    </div>
 
-        <div id="input">
-            <div class="input-group mb-1">
-                <div class="input-group-prepend">
-                    <div class="input-group-text">Item Code</div>
-                </div>
-
-
-                <input type="text" class="form-control" id="inlineFormInputGroup" id="codeInp"
-                    placeholder="select Item to get item code">
-
-            </div>
-        </div>
+    </div>
+    <div id="modal">
         <div id="input">
             <div class="input-group mb-1">
                 <div class="input-group-prepend">
@@ -133,10 +121,15 @@
 
             </div>
         </div>
-        <button type="button" class="btn btn-primary" id="submitBtn" onclick="submit()">Submit</button>
-        <button type="button" class="btn btn-primary" id="submitBtn" onclick="pageChange()">Report Page</button>
+        <button type="button" class="btn btn-primary" id="updtBtn" onclick="update()">update</button>
+        <button type="button" class="btn btn-primary" id="backBtn" onclick="back()">Back</button>
     </div>
+
+
+
+
     <script src="index.js">
+    // repot()
     </script>
 </body>
 
