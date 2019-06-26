@@ -20,6 +20,7 @@
                     <label class="input-group-text" for="inputGroupSelect01">Metal</label>
                 </div>
                 <select class="custom-select" id="inputGroupSelect01" onchange="select1()">
+                        <option>--select--</option>
 
                 </select>
             </div>
@@ -33,7 +34,7 @@
                     <label class="input-group-text" for="inputGroupSelect01">Items</label>
                 </div>
                 <select class="custom-select" id="inputGroupSelect02" onchange="itemCode()" disabled>
-
+                    <option>--select--</option>
                 </select>
             </div>
             <button type="button" class="btn btn-primary" id="AddBtn" onclick="addItem()">Add Item</button>
@@ -61,7 +62,9 @@
 
                 <input type="text" class="form-control" id="inlineFormInputGroup1" id="weigthInp"
                     placeholder="enter weigth">
-
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01" id="labelValue">g</label>
+                    </div>
             </div>
         </div>
         <div id="input">

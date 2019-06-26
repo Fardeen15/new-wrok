@@ -14,122 +14,144 @@
 </head>
 
 <body>
-    <div class="mainDiv" id="mainDiv">
-        <div class="row">
-            <div class="input-group col">
-                <div class="input-group-prepend">
-                    <label class="input-group-text" for="inputGroupSelect01">Metal</label>
-                </div>
-                <select class="custom-select" id="inputGroupSelect01" onchange="select1()">
+    <div class="mainDiv" id="tableDiv">
+        <table>
+            <tr>
+                <th>Item</th>
+                <th>Code</th>
+                <th>Weigth</th>
+                <th>Quantity</th>
+                <th>Quality</th>
+                <th>Stones</th>
+                <th><button onclick="addItem()" type="button" class="btn btn-primary">Add Item</button></th>
+            </tr>
+            <tbody id="tbody">
 
-                </select>
-            </div>
-        </div><br>
-        <div class="row">
-            <div class="input-group col">
-                <div class="input-group-prepend">
-                    <label class="input-group-text" for="inputGroupSelect01">Items</label>
-                </div>
-                <select class="custom-select" id="inputGroupSelect02" onchange="report()" disabled>
-
-                </select>
-            </div>
-        </div><br>
-        <div id="data">
-    </div>
+            </tbody>
+        </table>
 
     </div>
     <div id="modal">
-        <div id="input">
-            <div class="input-group mb-1">
-                <div class="input-group-prepend">
-                    <div class="input-group-text">weigth</div>
+        <div id="inputsDiv">
+
+            <div id="input">
+                <div class="input-group mb-1">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">Item</div>
+                    </div>
+
+
+                    <input type="text" class="form-control" id="inlineFormInputGroup0" id="ItemInp" placeholder="Item">
+
                 </div>
-
-
-                <input type="text" class="form-control" id="inlineFormInputGroup1" id="weigthInp"
-                    placeholder="enter weigth">
-
             </div>
-        </div>
-        <div id="input">
-            <div class="input-group mb-1">
-                <div class="input-group-prepend">
-                    <div class="input-group-text">Quantity</div>
+            <div id="input">
+                <div class="input-group mb-1">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">code</div>
+                    </div>
+
+
+                    <input type="text" class="form-control" id="inlineFormInputGroup" id="codeInp" placeholder="Code">
+
                 </div>
-
-
-                <input type="text" class="form-control" id="inlineFormInputGroup2" id="quantityIn"
-                    placeholder="Quantity">
-
             </div>
-        </div>
-        <div id="input">
-            <div class="input-group mb-1">
-                <div class="input-group-prepend">
-                    <div class="input-group-text">Quality</div>
+            <div id="input">
+                <div class="input-group mb-1">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">weigth</div>
+                    </div>
+
+
+                    <input type="text" class="form-control" id="inlineFormInputGroup1" id="weigthInp"
+                        placeholder="enter weigth">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01" id="labelValue">g</label>
+                    </div>
                 </div>
-
-
-                <input type="text" class="form-control" id="inlineFormInputGroup3" id="qualityInp"
-                    placeholder="Quality">
-
             </div>
-        </div>
-        <div id="input">
-            <div class="input-group mb-1">
-                <div class="input-group-prepend">
-                    <div class="input-group-text">Stone</div>
+            <div id="input">
+                <div class="input-group mb-1">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">Quantity</div>
+                    </div>
+
+
+                    <input type="text" class="form-control" id="inlineFormInputGroup2" id="quantityIn"
+                        placeholder="Quantity">
+
                 </div>
-
-
-                <input type="text" class="form-control" id="inlineFormInputGroup4" id="stonesInp" placeholder="Stones">
-
             </div>
-        </div>
-        <div id="input">
-            <div class="input-group mb-1">
-                <div class="input-group-prepend">
-                    <div class="input-group-text">description</div>
+            <div id="input">
+                <div class="input-group mb-1">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">Quality</div>
+                    </div>
+
+
+                    <input type="text" class="form-control" id="inlineFormInputGroup3" id="qualityInp"
+                        placeholder="Quality">
+
                 </div>
-
-
-                <input type="text" class="form-control" id="inlineFormInputGroup5" id="descriptionInp"
-                    placeholder="description">
-
             </div>
-        </div>
-        <div id="input">
-            <div class="input-group mb-1">
-                <div class="input-group-prepend">
-                    <div class="input-group-text">source</div>
+            <div id="input">
+                <div class="input-group mb-1">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">Stone</div>
+                    </div>
+
+
+                    <input type="text" class="form-control" id="inlineFormInputGroup4" id="stonesInp"
+                        placeholder="Stones">
+
                 </div>
-
-
-                <input type="text" class="form-control" id="inlineFormInputGroup6" id="sourceInp" placeholder="source">
-
             </div>
-        </div>
-        <div id="input">
-            <div class="input-group mb-1">
-                <div class="input-group-prepend">
-                    <div class="input-group-text">Image</div>
+            <div id="input">
+                <div class="input-group mb-1">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">description</div>
+                    </div>
+
+
+                    <input type="text" class="form-control" id="inlineFormInputGroup5" id="descriptionInp"
+                        placeholder="description">
+
                 </div>
-
-
-                <input type="file" class="form-control" id="inlineFormInputGroup7" id="ImageInp" placeholder="Image">
-
             </div>
+            <div id="input">
+                <div class="input-group mb-1">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">source</div>
+                    </div>
+
+
+                    <input type="text" class="form-control" id="inlineFormInputGroup6" id="sourceInp"
+                        placeholder="source">
+
+                </div>
+            </div>
+            <div id="input">
+                <div class="input-group mb-1">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">Image</div>
+                    </div>
+
+
+                    <input type="file" class="form-control" id="inlineFormInputGroup7" id="ImageInp"
+                        placeholder="Image">
+
+                </div>
+            </div>
+            <button type="button" class="btn btn-primary" id="updtBtn" onclick="update()">update</button>
+            <button type="button" class="btn btn-primary" id="backBtn" onclick="back()">Back</button>
         </div>
-        <button type="button" class="btn btn-primary" id="updtBtn" onclick="update()">update</button>
-        <button type="button" class="btn btn-primary" id="backBtn" onclick="back()">Back</button>
     </div>
 
 
 
 
-    <script src="index.js">
-    // repot()
+    <script src="report.js">
+        report()
     </script>
 </body>
 
