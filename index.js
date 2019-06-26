@@ -167,9 +167,26 @@ function itemCode() {
     })
     var date = new Date().getFullYear();
     var covert = date.toString().slice(2);
-
+    var number = 1;
     var input = document.getElementById("inlineFormInputGroup");
-    input.value = code1 + code2 + covert + "00" + 1;
+    var itemCode = code1 + code2 + covert + "00" + number;
+    input.value = itemCode;
+    database.ref().child('data').child('info').on('value', (snap) => {
+        var data = Object.values(snap.val());
+        for (var i = 0; i < data.length; i++) {
+            // var code = data[i].code;
+            if (data[i].code === itemCode) {  
+                ++number
+                var code = code1 + code2 + covert + "00" + number;
+                input.value = code;
+                console.log(code)
+            } 
+            // else {
+            //     var code = code1 + code2 + covert + "00" + number;
+            //     input.value = code;
+            // }
+        }
+    })
 
 }
 
