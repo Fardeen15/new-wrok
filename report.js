@@ -75,14 +75,15 @@ function report() {
         for (var i = 0; i < data.length; i++) {
             document.getElementById('tbody').innerHTML += `
                 <tr>
+                <td>${data[i].metal}</td>
                 <td>${data[i].item}</td>
                 <td>${data[i].code}</td>
                 <td>${data[i].weigth}</td>
                 <td>${data[i].quantity}</td>
                 <td>${data[i].quality}</td>
                 <td>${data[i].stone}</td>
-                <td><button name = "${data[i].code}" type="button" class="btn btn-primary" id="editBtn" onclick="edit(event)">Edit</button></td>
-                <td><button name = "${data[i].code}" type="button" class="btn btn-primary" id="deleteBtn" onclick="remove(event)">Delete</button></td>
+                <td><button name = "${data[i].code}" type="button" class="btn btn-secondary" id="editBtn" onclick="edit(event)">Edit</button></td>
+                <td><button name = "${data[i].code}" type="button" class="btn btn-secondary" id="deleteBtn" onclick="remove(event)">Delete</button></td>
                 </tr>
                 `
         }

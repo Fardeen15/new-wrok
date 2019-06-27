@@ -152,9 +152,9 @@ function item() {
 // var index1 = document.getElementById("inputGroupSelect02").value;
 // console.log(index1);
 function itemCode() {
+
     var index = document.getElementById("inputGroupSelect01").value;
     var index1 = document.getElementById("inputGroupSelect02").value;
-    // console.log(index1)
     let code1;
     let code2;
     database.ref().child('data').child('metal').child(index).on('value', (snap) => {
@@ -169,22 +169,20 @@ function itemCode() {
     var covert = date.toString().slice(2);
     var number = 1;
     var input = document.getElementById("inlineFormInputGroup");
+
     var itemCode = code1 + code2 + covert + "00" + number;
+
     input.value = itemCode;
     database.ref().child('data').child('info').on('value', (snap) => {
         var data = Object.values(snap.val());
         for (var i = 0; i < data.length; i++) {
-            // var code = data[i].code;
-            if (data[i].code === itemCode) {  
-                ++number
-                var code = code1 + code2 + covert + "00" + number;
-                input.value = code;
-                console.log(code)
-            } 
-            // else {
-            //     var code = code1 + code2 + covert + "00" + number;
-            //     input.value = code;
-            // }
+            if (data[i].code === itemCode) {
+                var get = data[i].code;
+                var arr = get.split("");
+                var plus = Number(arr.slice(-1)) + 1;
+                itemCode = code1 + code2 + covert + "00" + plus;
+                input.value = itemCode;
+            }
         }
     })
 
@@ -200,7 +198,7 @@ image.addEventListener("change", function (e) {
 
 function submit() {
     // console.log(this)
-    // var metal = document.getElementById('inputGroupSelect01').value;
+    var metal = document.getElementById('inputGroupSelect01').value;
     var item = document.getElementById('inputGroupSelect02').value;
     var code = document.getElementById('inlineFormInputGroup').value;
     var weigth = document.getElementById('inlineFormInputGroup1').value + document.getElementById('labelValue').innerHTML;
@@ -212,7 +210,7 @@ function submit() {
     var image = document.getElementById('inlineFormInputGroup7').value;
     console.log(weigth)
     var obj = {
-        // metal : metal,
+        metal: metal,
         item: item,
         code: code,
         weigth: weigth,
@@ -224,6 +222,8 @@ function submit() {
     }
     console.log(obj)
     database.ref().child('data').child('info').child(code).set(obj)
+    document.getElementById('inputGroupSelect01').value += "";
+    document.getElementById('inputGroupSelect02').value += "";
 
     document.getElementById('inlineFormInputGroup').value = ""
     document.getElementById('inlineFormInputGroup1').value = ""
@@ -237,6 +237,9 @@ function submit() {
 function pageChange() {
     window.location.href = "report.html"
 }
+
+
+
 // var storage = firebase.storage();
 // var pathReference = storage.ref('images/shoes11.jpg');
 // var src;
