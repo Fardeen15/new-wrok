@@ -73,19 +73,27 @@ function report() {
     database.ref().child('data').child('info').on('value', (snap) => {
         var data = Object.values(snap.val())
         for (var i = 0; i < data.length; i++) {
-            document.getElementById('tbody').innerHTML += `
-                <tr>
-                <td>${data[i].metal}</td>
-                <td>${data[i].item}</td>
-                <td>${data[i].code}</td>
-                <td>${data[i].weigth}</td>
-                <td>${data[i].quantity}</td>
-                <td>${data[i].quality}</td>
-                <td>${data[i].stone}</td>
-                <td><button name = "${data[i].code}" type="button" class="btn btn-secondary" id="editBtn" onclick="edit(event)">Edit</button></td>
-                <td><button name = "${data[i].code}" type="button" class="btn btn-secondary" id="deleteBtn" onclick="remove(event)">Delete</button></td>
-                </tr>
-                `
+            var data1 = Object.values(data[i]);
+            for (var j = 0; j < data1.length; j++) {
+                console.log(data1[j].metal)
+                database.ref().child('data').child('info').child(data1[j].metal).on('value', (snap) => {
+                    var data2 = Object.values(snap.val());
+
+                        document.getElementById('tbody').innerHTML += `
+                      <tr>
+                      <td>${data2[j].metal}</td>
+                      <td>${data2[j].item}</td>
+                      <td>${data2[j].code}</td>
+                      <td>${data2[j].weigth}</td>
+                      <td>${data2[j].quantity}</td>
+                      <td>${data2[j].quality}</td>
+                      <td>${data2[j].stone}</td>
+                      <td><button name = "${data2[j].code}" type="button" class="btn btn-secondary" id="editBtn" onclick="edit(event)">Edit</button></td>
+                      <td><button name = "${data2[j].code}" type="button" class="btn btn-secondary" id="deleteBtn" onclick="remove(event)">Delete</button></td>
+                      </tr>
+                      `
+                })
+            }
         }
     })
 }

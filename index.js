@@ -151,6 +151,7 @@ function item() {
 }
 // var index1 = document.getElementById("inputGroupSelect02").value;
 // console.log(index1);
+
 function itemCode() {
 
     var index = document.getElementById("inputGroupSelect01").value;
@@ -173,9 +174,11 @@ function itemCode() {
     var itemCode = code1 + code2 + covert + "00" + number;
 
     input.value = itemCode;
-    database.ref().child('data').child('info').on('value', (snap) => {
+    var metal = document.getElementById('inputGroupSelect01').value;
+    database.ref().child('data').child('info').child(metal).on('value', (snap) => {
         var data = Object.values(snap.val());
         for (var i = 0; i < data.length; i++) {
+            // console.log(data[i].code,itemCode)
             if (data[i].code === itemCode) {
                 var get = data[i].code;
                 var arr = get.split("");
@@ -195,10 +198,9 @@ image.addEventListener("change", function (e) {
     ref.put(file);
 })
 
-
 function submit() {
     // console.log(this)
-    var metal = document.getElementById('inputGroupSelect01').value;
+    var metal1 = document.getElementById('inputGroupSelect01').value;
     var item = document.getElementById('inputGroupSelect02').value;
     var code = document.getElementById('inlineFormInputGroup').value;
     var weigth = document.getElementById('inlineFormInputGroup1').value + document.getElementById('labelValue').innerHTML;
@@ -208,9 +210,9 @@ function submit() {
     var description = document.getElementById('inlineFormInputGroup5').value;
     var source = document.getElementById('inlineFormInputGroup6').value;
     var image = document.getElementById('inlineFormInputGroup7').value;
-    console.log(weigth)
+    // console.log(weigth)
     var obj = {
-        metal: metal,
+        metal: metal1,
         item: item,
         code: code,
         weigth: weigth,
@@ -220,8 +222,8 @@ function submit() {
         description: description,
         source: source
     }
-    console.log(obj)
-    database.ref().child('data').child('info').child(code).set(obj)
+    // console.log(obj)
+    database.ref().child('data').child('info').child(metal1).child(code).set(obj)
     document.getElementById('inputGroupSelect01').value += "";
     document.getElementById('inputGroupSelect02').value += "";
 
@@ -272,3 +274,40 @@ function pageChange() {
 //     })
 // })
 
+function metalSummary() {
+    document.getElementById('metalItem').innerHTML = ""
+    document.getElementById('metalItem').style.display = 'block';
+    document.getElementById('metalItem').style.transition = "6es"
+    database.ref().child('data').child('metal').on('value', (snap) => {
+        var data = Object.values(snap.val());
+        for (var i = 0; i < data.length; i++) {
+            document.getElementById('metalItem').innerHTML +=
+                `<div ><button name = "${data[i].name}" id="btn" class="btn btn-dark" onclick = "itemsDiv(event)">${data[i].name}</button><span id = "${data[i].name}" class = "quantity"></span></div>`
+        }
+        database.ref().child('data').child('info').on('value', (snap) => {
+            var data1 = Object.values(snap.val());
+
+            for (var j = 0; j < data1.length; j++) {
+                for (var v = 0; v < Object.values(data1[j]).length; v++) {
+                    var length = Object.values(data1[j]).length;
+                    var id = document.getElementById(`${Object.values(data1[j])[v].metal}`).getAttribute('id')
+                    if (id === Object.values(data1[j])[v].metal) {
+                        document.getElementById(`${Object.values(data1[j])[v].metal}`).innerHTML = length + " " + " items Added" ;
+                    }
+                }
+            }
+        })
+    })
+}
+
+function itemsDiv(ev) {
+    console.log(ev.target.name)
+    document.getElementById('itemDiv').innerHTML = ""
+    document.getElementById('itemDiv').style.display = 'block'
+    database.ref().child('data').child('info').child(ev.target.name).on('value', (snap) => {
+        var data = Object.values(snap.val());
+        for (var i = 0; i < data.length; i++) { 
+            document.getElementById('itemDiv').innerHTML += data[i].code + " " + data[i].item + " " + data[i].quantity + "<br>";
+        }
+    })
+}
